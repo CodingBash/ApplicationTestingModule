@@ -40,7 +40,7 @@ public class ControlManager {
 		LOGGER = new ApplicationLogger();
 		ApplicationLogger.addLog("info", "Setting up the program", true, true);
 		INPUT = new InputAdapter(this);
-		OBJECT = new AnalysisObject("SE_Example_1.txt");
+		OBJECT = new AnalysisObject("res/SE_Example_1.txt");
 		stateTitleList = new HashMap<String, ApplicationState>();
 		applicationStatesList = new ArrayList<ApplicationState>();
 		insertAllStateOptions();
