@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 import control.ControlManager;
 import control.InputAdapter;
 
+/**
+ * Main panel of application. Instanced in {@link view.ApplicationFrameView}
+ * 
+ * @author Basheer
+ *
+ */
 @SuppressWarnings("serial")
 public class ApplicationPanelView extends JPanel {
 
@@ -22,6 +28,11 @@ public class ApplicationPanelView extends JPanel {
 	public boolean running = true;
 	public static ControlManager control;
 
+	/**
+	 * Panel constructor. Creates ControlManager, adds input, dimensions, and
+	 * background color.
+	 * 
+	 */
 	public ApplicationPanelView() {
 		control = new ControlManager();
 		addKeyListener(control.INPUT);
@@ -29,6 +40,12 @@ public class ApplicationPanelView extends JPanel {
 		setBackground(Color.BLACK);
 	}
 
+	/**
+	 * Method called on repaint(). Sends the graphics object through the
+	 * ControlManager which ControlManager directs to all models and
+	 * controllers.
+	 * 
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		control.draw(g);
@@ -38,6 +55,10 @@ public class ApplicationPanelView extends JPanel {
 		// EMPTY
 	}
 
+	/**
+	 * Main application loop. Repaints screen and requests application updates.
+	 * 
+	 */
 	public void run() {
 		init();
 
@@ -47,14 +68,14 @@ public class ApplicationPanelView extends JPanel {
 
 		while (running) {
 			startTime = System.nanoTime();
-			//control.update();
+			// control.update(); wait until states are setup
 			repaint();
 			elapsedTime = System.nanoTime() - startTime;
 			wait = targetTime - elapsedTime / ((long) (Math.pow(10, 9)));
 			delay((int) wait);
 		}
 	}
-
+	
 	public void delay(int n) {
 		try {
 			Thread.sleep(n);

@@ -10,39 +10,65 @@ import java.util.HashMap;
 
 import model.AnalysisObject;
 
+/**
+ * 
+ * ControlManager is the interconnection of MVC (Model-View-Controller)
+ * ControlManager holds important instances and also handles the flow of data.
+ * There can be extensions of ControlManager in the future if there is too much
+ * in the class (each for specific tasks).
+ */
 public class ControlManager {
 
 	public ArrayList<ApplicationState> applicationStatesList;
+	public ApplicationLogger LOGGER;
 	public String currentState;
 	public HashMap<String, ApplicationState> stateTitleList;
 	public InputAdapter INPUT;
-	public ApplicationLogger LOGGER;
 	public AnalysisObject OBJECT;
 	public TestState state1 = new TestState();
 
+	/**
+	 * ControlManager default constructor. Initializes important objects and
+	 * prepares program.
+	 */
 	public ControlManager() {
 		LOGGER = new ApplicationLogger();
-		ApplicationLogger.addLog("info","Setting up the program");
+		ApplicationLogger.addLog("info", "Setting up the program", true, true);
 		INPUT = new InputAdapter(this);
 		OBJECT = new AnalysisObject("SE_Example_1.txt");
 		stateTitleList = new HashMap<String, ApplicationState>();
 		applicationStatesList = new ArrayList<ApplicationState>();
 		insertAllStateOptions();
 		importAllStateOptions();
-		ApplicationLogger.addLog("null", "-------------------------"); //End setup
+		ApplicationLogger.addLog("null", "-------------------------", true,
+				true); // End setup
 	}
 
+	/**
+	 * Inserts all states of the program into a list.
+	 * 
+	 */
 	public void insertAllStateOptions() {
-		ApplicationLogger.addLog("info", "Adding available states to list");
+		ApplicationLogger.addLog("info", "Adding available states to list",
+				false, true);
 		applicationStatesList.add(state1); // <-- This constructs the object
 	}
 
+	/**
+	 * Imports all states into a proper HashMap which will be the main command
+	 * object for changing states.
+	 * 
+	 */
 	public void importAllStateOptions() {
-		ApplicationLogger.addLog("info", "Adding available state objects to list");
+		ApplicationLogger.addLog("info",
+				"Adding available state objects to list", false, true);
 		if (applicationStatesList.size() != 0)
 			for (ApplicationState currentState : applicationStatesList) {
 				if (currentState == null)
-					break; /*ArrayList automatically reserves 10 indexes which some may be null */
+					break; /*
+							 * ArrayList automatically reserves 10 indexes which
+							 * some may be null
+							 */
 				stateTitleList
 						.put(formatClassName(currentState.getClass().getName(),
 								currentState.getClass().getPackage().toString()),
@@ -50,6 +76,15 @@ public class ControlManager {
 			}
 	}
 
+	/**
+	 * Formats the class name to get rid of "package."
+	 * 
+	 * @param unformattedClassName
+	 *            class name before formatting.
+	 * @param classPackageName
+	 *            name of the package of the class.
+	 * @return formattedClassName the formatted class name.
+	 */
 	public static String formatClassName(String unformattedClassName,
 			String classPackageName) {
 		String formattedClassName;
@@ -58,23 +93,44 @@ public class ControlManager {
 		return formattedClassName;
 	}
 
+	/**
+	 * Changes the state.
+	 * 
+	 * @param stateName
+	 *            name of the state.
+	 */
 	public void setState(String stateName) {
 		currentState = stateName;
 	}
 
 	public void draw(Graphics g) {
-		//stateTitleList.get(currentState).draw(g);
-		LOGGER.draw(g);
+		// stateTitleList.get(currentState).draw(g);
+		ApplicationLogger.draw(g);
 	}
 
+	/**
+	 * Updates selected objects within the current state.
+	 */
 	public void update() {
 		stateTitleList.get(currentState).update();
 	}
 
+	/**
+	 * Sends key pressed input to the current state.
+	 * 
+	 * @param k
+	 *            KeyEvent code of input.
+	 */
 	public void keyPressed(KeyEvent k) {
 		stateTitleList.get(currentState).keyPressed(k);
 	}
 
+	/**
+	 * Sends key released input to the current state.
+	 * 
+	 * @param k
+	 *            KeyEvent code of input.
+	 */
 	public void keyReleased(KeyEvent k) {
 		stateTitleList.get(currentState).keyReleased(k);
 	}

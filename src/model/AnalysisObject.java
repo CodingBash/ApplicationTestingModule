@@ -12,14 +12,14 @@ public class AnalysisObject {
 	private ArrayList<String> fileTextLines;
 	
 	public AnalysisObject(){
-		ApplicationLogger.addLog("info","Constructing the AnalysisObject");
+		ApplicationLogger.addLog("info","Constructing the AnalysisObject", false, true);
 		this.filePathLocation = "";
 		this.fileText = "";
 		this.fileTextLines = new ArrayList<String>();
 	}
 	
 	public AnalysisObject(String inputtedFilePathLocation){
-		ApplicationLogger.addLog("info","Constructing the AnalysisObject");
+		ApplicationLogger.addLog("info","Constructing the AnalysisObject", false, true);
 		this.filePathLocation = inputtedFilePathLocation;
 		this.fileText ="";
 		this.fileTextLines = new ArrayList<String>();

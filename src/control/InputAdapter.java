@@ -8,10 +8,16 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Controls input within the program.
+ * 
+ * @author Basheer
+ *
+ */
 public class InputAdapter implements KeyListener {
 
 	ControlManager mainControl;
-
+	
 	public InputAdapter(ControlManager mainControl) {
 			this.mainControl = mainControl;
 	}
