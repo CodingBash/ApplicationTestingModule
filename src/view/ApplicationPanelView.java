@@ -8,8 +8,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import adapters.InputAdapter;
 import control.ControlManager;
-import control.InputAdapter;
 
 /**
  * Main panel of application. Instanced in {@link view.ApplicationFrameView}

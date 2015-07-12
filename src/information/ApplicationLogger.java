@@ -1,6 +1,6 @@
-//TODO: Start on programming ApplicationLogger
+//TODO: Remove constructor in which an initialized instance is required (BAD).
 
-package control;
+package information;
 
 import java.awt.Color;
 import java.awt.Font;

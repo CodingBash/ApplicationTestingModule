@@ -36,7 +36,7 @@ public class LogData {
 	public String getFullMessage() {
 		return type + message;
 	}
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 	public String toString() {
 		return getFullMessage();
 	}

@@ -1,4 +1,4 @@
-package control;
+package states;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;

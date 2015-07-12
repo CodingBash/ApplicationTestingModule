@@ -1,6 +1,6 @@
 //TODO: Send exception to LOGGER to print to console
 
-package control;
+package information;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,8 @@
 //TODO: Complete simple framework for the Analyzer
 //TODO: Send analyzer information to LOGGER
-package control;
+package analysis;
+
+import information.ApplicationLogger;
 
 import java.util.ArrayList;
 

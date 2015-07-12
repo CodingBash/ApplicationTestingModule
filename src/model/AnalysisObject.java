@@ -1,9 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+import information.ApplicationFileReader;
+import information.ApplicationLogger;
 
-import control.ApplicationFileReader;
-import control.ApplicationLogger;
+import java.util.ArrayList;
 
 public class AnalysisObject {
 

@@ -1,12 +1,14 @@
 //TODO: Determine if mouse input is needed
 
 
-package control;
+package adapters;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import control.ControlManager;
 
 /**
  * Controls input within the program.

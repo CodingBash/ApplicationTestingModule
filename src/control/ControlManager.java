@@ -3,11 +3,16 @@
 
 package control;
 
+import information.ApplicationLogger;
+
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import adapters.InputAdapter;
+import states.ApplicationState;
+import states.TestState;
 import model.AnalysisObject;
 
 /**
